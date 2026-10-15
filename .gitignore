@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+data/*.db
+data/user_policy.json
+data/user_policy.json.tmp
+web/.env*
+!web/.env.example
+backend/.env*
