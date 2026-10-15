@@ -1,0 +1,195 @@
+{
+  "version": "1.0",
+  "scoring": {
+    "sensitivity_points": {
+      "low": 2,
+      "medium": 6,
+      "high": 12,
+      "critical": 20
+    },
+    "purpose_mismatch_points": 14,
+    "policy_violation_points": 25
+  },
+  "purpose_aliases": {
+    "note taking": "note taking",
+    "notes": "note taking",
+    "weather forecasts": "weather forecasts",
+    "weather": "weather forecasts",
+    "flashlight": "flashlight",
+    "torch": "flashlight",
+    "audio recording": "audio recording",
+    "voice memo": "audio recording",
+    "calculator": "calculator",
+    "photo editing": "photo editing",
+    "photography": "photography",
+    "navigation": "navigation",
+    "messaging": "messaging",
+    "file management": "file management",
+    "video calling": "video calling",
+    "fitness tracking": "fitness tracking"
+  },
+  "permissions": {
+    "android.permission.INTERNET": {
+      "sensitivity": "low",
+      "impact": "Allows network connections; data exposure depends on app behavior and destination.",
+      "justified_purposes": ["note taking", "weather forecasts", "photo editing", "messaging", "video calling", "file management"],
+      "recommended_action": "Confirm network access is required and review the app's documented data handling."
+    },
+    "android.permission.ACCESS_COARSE_LOCATION": {
+      "sensitivity": "high",
+      "impact": "Can provide approximate device location, which may reveal places the user visits.",
+      "justified_purposes": ["weather forecasts", "navigation", "fitness tracking"],
+      "recommended_action": "Prefer location access only while in use and only at the precision needed."
+    },
+    "android.permission.ACCESS_FINE_LOCATION": {
+      "sensitivity": "high",
+      "impact": "Can provide precise device location and expose sensitive movement patterns.",
+      "justified_purposes": ["navigation", "fitness tracking", "weather forecasts"],
+      "recommended_action": "Verify precise location is essential; prefer approximate or foreground-only access when feasible."
+    },
+    "android.permission.ACCESS_BACKGROUND_LOCATION": {
+      "sensitivity": "critical",
+      "impact": "Can allow location access while the app is not actively in use.",
+      "justified_purposes": ["navigation", "fitness tracking"],
+      "recommended_action": "Require a clear background feature justification and prefer foreground-only location."
+    },
+    "android.permission.READ_CONTACTS": {
+      "sensitivity": "high",
+      "impact": "Can read personal contact details stored on the device.",
+      "justified_purposes": ["messaging", "video calling"],
+      "recommended_action": "Use a user-selected contact picker instead of broad address-book access when possible."
+    },
+    "android.permission.WRITE_CONTACTS": {
+      "sensitivity": "high",
+      "impact": "Can modify or add entries in the user's contacts.",
+      "justified_purposes": ["messaging"],
+      "recommended_action": "Confirm contact editing is a documented core feature and minimize the fields changed."
+    },
+    "android.permission.GET_ACCOUNTS": {
+      "sensitivity": "medium",
+      "impact": "Can discover account identifiers configured on the device.",
+      "justified_purposes": ["messaging"],
+      "recommended_action": "Verify account discovery is necessary and avoid collecting unrelated account identifiers."
+    },
+    "android.permission.RECORD_AUDIO": {
+      "sensitivity": "high",
+      "impact": "Can access the microphone when granted; the manifest declaration alone does not show when recording occurs.",
+      "justified_purposes": ["audio recording", "video calling"],
+      "recommended_action": "Request microphone access only for a user-visible feature and clearly indicate when recording is active."
+    },
+    "android.permission.CAMERA": {
+      "sensitivity": "medium",
+      "impact": "Can access the camera when granted; the declaration does not establish that images are captured.",
+      "justified_purposes": ["photo editing", "photography", "video calling"],
+      "recommended_action": "Request camera access only when the user invokes a camera feature."
+    },
+    "android.permission.READ_EXTERNAL_STORAGE": {
+      "sensitivity": "medium",
+      "impact": "Can expose files in shared external storage, subject to Android version and access controls.",
+      "justified_purposes": ["photo editing", "file management"],
+      "recommended_action": "Prefer Android's Storage Access Framework or a system photo picker for user-selected files."
+    },
+    "android.permission.WRITE_EXTERNAL_STORAGE": {
+      "sensitivity": "medium",
+      "impact": "Can allow writing shared external storage on Android versions where the permission applies.",
+      "justified_purposes": ["photo editing", "file management"],
+      "recommended_action": "Use scoped storage and write only files the user explicitly chooses."
+    },
+    "android.permission.MANAGE_EXTERNAL_STORAGE": {
+      "sensitivity": "critical",
+      "impact": "Can provide broad access to shared storage beyond ordinary media selection.",
+      "justified_purposes": ["file management"],
+      "recommended_action": "Remove broad storage access unless a qualifying core use case requires it; prefer scoped storage."
+    },
+    "android.permission.READ_MEDIA_AUDIO": {
+      "sensitivity": "medium",
+      "impact": "Can access audio media stored on shared device storage.",
+      "justified_purposes": ["file management"],
+      "recommended_action": "Use a user-selected media picker where broad library access is unnecessary."
+    },
+    "android.permission.READ_MEDIA_IMAGES": {
+      "sensitivity": "medium",
+      "impact": "Can access image media stored on shared device storage.",
+      "justified_purposes": ["photo editing", "file management"],
+      "recommended_action": "Prefer a system photo picker or request only the selected images."
+    },
+    "android.permission.READ_MEDIA_VIDEO": {
+      "sensitivity": "medium",
+      "impact": "Can access video media stored on shared device storage.",
+      "justified_purposes": ["photo editing", "file management"],
+      "recommended_action": "Prefer a user-selected media picker and limit access to files needed for the task."
+    },
+    "android.permission.READ_MEDIA_VISUAL_USER_SELECTED": {
+      "sensitivity": "low",
+      "impact": "Relates to access to images and video selected by the user.",
+      "justified_purposes": ["photo editing", "file management"],
+      "recommended_action": "Keep visual-media access scoped to items selected by the user."
+    },
+    "android.permission.FOREGROUND_SERVICE": {
+      "sensitivity": "low",
+      "impact": "Allows the app to declare foreground-service operation, which can support ongoing visible work.",
+      "justified_purposes": ["navigation", "fitness tracking", "audio recording", "video calling"],
+      "recommended_action": "Confirm any foreground service is user-visible, task-limited, and stopped when no longer needed."
+    },
+    "android.permission.RECEIVE_BOOT_COMPLETED": {
+      "sensitivity": "low",
+      "impact": "Allows receiving a device boot event to schedule app work after startup.",
+      "justified_purposes": ["navigation", "fitness tracking"],
+      "recommended_action": "Verify startup behavior is essential and defer work until the user needs it."
+    },
+    "android.permission.WAKE_LOCK": {
+      "sensitivity": "low",
+      "impact": "Can keep the device from sleeping while the app holds a wake lock.",
+      "justified_purposes": ["navigation", "fitness tracking", "audio recording", "video calling"],
+      "recommended_action": "Use bounded wake locks only while an active user-visible task requires them."
+    },
+    "android.permission.SCHEDULE_EXACT_ALARM": {
+      "sensitivity": "medium",
+      "impact": "Can schedule time-sensitive alarms subject to Android's platform restrictions.",
+      "justified_purposes": ["fitness tracking"],
+      "recommended_action": "Use inexact scheduling unless exact timing is a documented core requirement."
+    },
+    "android.permission.SEND_SMS": {
+      "sensitivity": "critical",
+      "impact": "Can send SMS messages, potentially incurring charges or contacting others.",
+      "justified_purposes": ["messaging"],
+      "recommended_action": "Prefer the system messaging intent so users review and send messages themselves."
+    },
+    "android.permission.READ_SMS": {
+      "sensitivity": "critical",
+      "impact": "Can read SMS content, which may include private conversations or authentication codes.",
+      "justified_purposes": ["messaging"],
+      "recommended_action": "Avoid broad SMS access; use user-mediated Android APIs for the specific task."
+    }
+  },
+  "denied_permissions": [],
+  "combinations": [
+    {
+      "id": "location-and-contacts",
+      "groups": ["location", "contacts"],
+      "severity": "medium",
+      "score": 16,
+      "confidence": 0.65,
+      "explanation": "Location and contact access together can expose linked personal and movement data; the combination warrants context review.",
+      "recommended_action": "Confirm both capabilities are necessary for a documented feature and minimize access scope."
+    },
+    {
+      "id": "microphone-and-background-execution",
+      "groups": ["microphone", "background_execution"],
+      "severity": "high",
+      "score": 22,
+      "confidence": 0.7,
+      "explanation": "Microphone and background-execution declarations together can enable audio-related work outside the immediate foreground; their co-occurrence alone does not show recording.",
+      "recommended_action": "Verify microphone use is user-initiated and visible, and confirm background execution is essential and bounded."
+    },
+    {
+      "id": "storage-and-network",
+      "groups": ["storage", "network"],
+      "severity": "medium",
+      "score": 16,
+      "confidence": 0.65,
+      "explanation": "File or media access together with network access can support data transfer; declarations alone do not establish that files are uploaded.",
+      "recommended_action": "Review file selection, data-flow documentation, and network destinations; prefer user-selected files and disclose transfers."
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "review_status": "Independent review complete",
+  "review_method": "A separate read-only code review adjudicated scenario descriptions and expected outputs against the configured policy and analyzer rules before final metrics were recorded.",
+  "review_scope": "Expected policy-triage findings derived from the documented scenario facts and security_policy.json; not malware ground truth.",
+  "matching": "Finding instance key is category plus the sorted, exact permission tuple. Actionable categories are purpose_mismatch, policy_violation, and suspicious_combination.",
+  "scenarios": {
+    "weather-legitimate": {
+      "expected_actionable_findings": [],
+      "expected_uncertainty_categories": []
+    },
+    "photo-editor-legitimate": {
+      "expected_actionable_findings": [
+        "suspicious_combination|android.permission.INTERNET+android.permission.READ_MEDIA_IMAGES"
+      ],
+      "expected_uncertainty_categories": []
+    },
+    "voice-memo-legitimate": {
+      "expected_actionable_findings": [],
+      "expected_uncertainty_categories": []
+    },
+    "calculator-overprivileged": {
+      "expected_actionable_findings": [
+        "purpose_mismatch|android.permission.CAMERA",
+        "purpose_mismatch|android.permission.READ_CONTACTS"
+      ],
+      "expected_uncertainty_categories": []
+    },
+    "contacts-location-review": {
+      "expected_actionable_findings": [
+        "purpose_mismatch|android.permission.ACCESS_FINE_LOCATION",
+        "suspicious_combination|android.permission.ACCESS_FINE_LOCATION+android.permission.READ_CONTACTS"
+      ],
+      "expected_uncertainty_categories": []
+    },
+    "microphone-background-review": {
+      "expected_actionable_findings": [
+        "purpose_mismatch|android.permission.RECEIVE_BOOT_COMPLETED",
+        "suspicious_combination|android.permission.RECEIVE_BOOT_COMPLETED+android.permission.RECORD_AUDIO"
+      ],
+      "expected_uncertainty_categories": []
+    },
+    "unknown-purpose": {
+      "expected_actionable_findings": [],
+      "expected_uncertainty_categories": [
+        "unknown_purpose"
+      ]
+    },
+    "unknown-permission": {
+      "expected_actionable_findings": [],
+      "expected_uncertainty_categories": [
+        "unknown_permission"
+      ]
+    },
+    "organizational-denylist": {
+      "expected_actionable_findings": [
+        "policy_violation|android.permission.SEND_SMS"
+      ],
+      "expected_uncertainty_categories": []
+    },
+    "file-manager-network-review": {
+      "expected_actionable_findings": [
+        "suspicious_combination|android.permission.INTERNET+android.permission.READ_MEDIA_IMAGES"
+      ],
+      "expected_uncertainty_categories": []
+    }
+  },
+  "policy_overrides": {
+    "corporate-sms-denylist": {
+      "denied_permissions": [
+        "android.permission.SEND_SMS"
+      ]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "app_name": "Sample Notes",
+  "package_name": "org.example.notes",
+  "purpose": "note taking",
+  "permissions": [
+    "android.permission.INTERNET",
+    "android.permission.CAMERA"
+  ]
+}

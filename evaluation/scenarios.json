@@ -1,0 +1,115 @@
+{
+  "dataset": "PermissionGuard synthetic permission-review scenarios",
+  "dataset_version": "1.0",
+  "scope": "Deterministic policy-triage behavior; not real-world maliciousness detection.",
+  "scenarios": [
+    {
+      "id": "weather-legitimate",
+      "app_name": "Weather Window",
+      "package_name": "org.example.eval.weather",
+      "purpose": "weather forecasts",
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ],
+      "description": "Weather forecast app using network and location for local forecasts."
+    },
+    {
+      "id": "photo-editor-legitimate",
+      "app_name": "Pocket Photo Studio",
+      "package_name": "org.example.eval.photo",
+      "purpose": "photo editing",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.INTERNET"
+      ],
+      "description": "Photo editor that captures, selects, and synchronizes images."
+    },
+    {
+      "id": "voice-memo-legitimate",
+      "app_name": "Voice Memo",
+      "package_name": "org.example.eval.voice",
+      "purpose": "audio recording",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "description": "Foreground voice recorder whose microphone permission is core to its stated purpose."
+    },
+    {
+      "id": "calculator-overprivileged",
+      "app_name": "Offline Calculator",
+      "package_name": "org.example.eval.calculator",
+      "purpose": "calculator",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_CONTACTS"
+      ],
+      "description": "Offline calculator with camera and contacts declarations not justified by the configured purpose catalog."
+    },
+    {
+      "id": "contacts-location-review",
+      "app_name": "Social Locator",
+      "package_name": "org.example.eval.social-locator",
+      "purpose": "messaging",
+      "permissions": [
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.READ_CONTACTS"
+      ],
+      "description": "Messaging app declaring contacts and precise location; contact access is purpose-listed while location and contacts co-occur."
+    },
+    {
+      "id": "microphone-background-review",
+      "app_name": "Video Connect",
+      "package_name": "org.example.eval.video-connect",
+      "purpose": "video calling",
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.RECEIVE_BOOT_COMPLETED"
+      ],
+      "description": "Video-calling microphone is purpose-justified, while microphone plus boot-time background declaration and boot receiver's purpose fit warrant review."
+    },
+    {
+      "id": "unknown-purpose",
+      "app_name": "Camera Utility",
+      "package_name": "org.example.eval.unknown-purpose",
+      "purpose": "field research capture workflow",
+      "permissions": [
+        "android.permission.CAMERA"
+      ],
+      "description": "Known camera permission with a purpose absent from the configured purpose alias list; the analyzer should avoid asserting a mismatch."
+    },
+    {
+      "id": "unknown-permission",
+      "app_name": "Prototype Client",
+      "package_name": "org.example.eval.unknown-permission",
+      "purpose": "calculator",
+      "permissions": [
+        "org.example.permission.READ_DEVICE_TELEMETRY"
+      ],
+      "description": "Unknown permission and known app purpose; the analyzer should disclose catalog uncertainty and avoid inventing impact."
+    },
+    {
+      "id": "organizational-denylist",
+      "app_name": "Corporate Messenger",
+      "package_name": "org.example.eval.corp-messenger",
+      "purpose": "messaging",
+      "permissions": [
+        "android.permission.SEND_SMS"
+      ],
+      "policy_override": "corporate-sms-denylist",
+      "description": "Messaging app where SMS is purpose-listed but explicitly forbidden by this scenario's organizational policy."
+    },
+    {
+      "id": "file-manager-network-review",
+      "app_name": "Cloud File Cabinet",
+      "package_name": "org.example.eval.file-manager",
+      "purpose": "file management",
+      "permissions": [
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.INTERNET"
+      ],
+      "description": "File manager with purpose-justified media and network access whose co-occurrence merits data-flow review, not a maliciousness conclusion."
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+app_name,package_name,purpose,permission
+Sample Notes,org.example.notes,note taking,android.permission.INTERNET
+Sample Notes,org.example.notes,note taking,android.permission.INTERNET

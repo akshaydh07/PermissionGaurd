@@ -1,0 +1,32 @@
+[
+  {
+    "app_name": "Pocket Notes",
+    "package_name": "org.example.pocketnotes",
+    "purpose": "note taking",
+    "permissions": ["android.permission.INTERNET", "android.permission.CAMERA"]
+  },
+  {
+    "app_name": "Weather Window",
+    "package_name": "org.example.weatherwindow",
+    "purpose": "weather forecasts",
+    "permissions": ["android.permission.INTERNET", "android.permission.ACCESS_FINE_LOCATION"]
+  },
+  {
+    "app_name": "Torch Lite",
+    "package_name": "org.example.torchlite",
+    "purpose": "flashlight",
+    "permissions": ["android.permission.CAMERA"]
+  },
+  {
+    "app_name": "Voice Memo",
+    "package_name": "org.example.voicememo",
+    "purpose": "audio recording",
+    "permissions": ["android.permission.RECORD_AUDIO", "android.permission.WRITE_EXTERNAL_STORAGE"]
+  },
+  {
+    "app_name": "Offline Calculator",
+    "package_name": "org.example.calculator",
+    "purpose": "calculator",
+    "permissions": []
+  }
+]
